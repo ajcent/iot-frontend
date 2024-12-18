@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 
-import { fetchUIDs } from "@/services/uid";
+import { fetchAllUIDs } from "@/services/uid";
 import { useAuth } from "@/contexts/authContext";
 import UserCard from "@/components/userCard";
 import AddUserDialog from "@/components/addUserDialog";
 
 function DashboardHome() {
   const { logout } = useAuth();
-  const uids = useQuery({ queryKey: ["uids"], queryFn: fetchUIDs });
+  const uids = useQuery({ queryKey: ["uids"], queryFn: fetchAllUIDs });
 
   const handleLogout = () => {
     logout();

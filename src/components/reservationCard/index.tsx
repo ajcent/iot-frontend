@@ -12,7 +12,7 @@ const ReservationCard: React.FC<ReservationCardProps> = (props) => {
   return (
     <Card className="shadow-none">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-lg">{`Park ${slot}`}</CardTitle>
+        <CardTitle>{`Park ${slot}`}</CardTitle>
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground">

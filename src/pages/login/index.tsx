@@ -1,7 +1,7 @@
 // components/Login.tsx
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
 import { useAuth } from "@/contexts/authContext";
@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-type LoginFormInputs = {
+export type LoginFormInputs = {
   username: string;
   password: string;
 };
@@ -36,38 +36,51 @@ const Login: React.FC = () => {
 
   const onSubmit = async (data: LoginFormInputs) => {
     setError(() => undefined);
-    mutation.mutate();
+    mutation.mutate(data);
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="sm:bg-red-400 sm:max-w-xl m-4"
-    >
-      <div>
-        <Label htmlFor="username">Username</Label>
-        <Input
-          className="mt-2 mb-4"
-          id="username"
-          placeholder="Eg. Luigi Dapo"
-          {...register("username", { required: true })}
-        />
-      </div>
-      <div>
-        <Label htmlFor="password">Password</Label>
-        <Input
-          className="mt-2 mb-4"
-          id="password"
-          type="password"
-          placeholder="********"
-          {...register("password", { required: true })}
-        />
-      </div>
-      <Button type="submit" disabled={mutation.isPending} className="w-full">
-        {mutation.isPending ? "Logging in..." : "Login"}
-      </Button>
-      {mutation.isError && <p>Error: {mutation.error?.message}</p>}
-    </form>
+    <main className="h-screen w-full flex p-4 items-center justify-center">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="sm:max-w-xl w-full shadow-lg border rounded p-4"
+      >
+        <h3 className="text-xl text-center font-bold mb-4">
+          <Link to="/">IGLUI PARK</Link>
+        </h3>
+        <div>
+          <Label htmlFor="username" className="text-muted-foreground">
+            Username
+          </Label>
+          <Input
+            className="mt-2 mb-4"
+            id="username"
+            placeholder="Eg. Luigi Dapo"
+            {...register("username", { required: true })}
+          />
+        </div>
+        <div>
+          <Label htmlFor="password" className="text-muted-foreground">
+            Password
+          </Label>
+          <Input
+            className="mt-2 mb-4"
+            id="password"
+            type="password"
+            placeholder="********"
+            {...register("password", { required: true })}
+          />
+        </div>
+        <Button type="submit" disabled={mutation.isPending} className="w-full">
+          {mutation.isPending ? "Logging in..." : "Login"}
+        </Button>
+        {mutation.isError && (
+          <p className="text-destructive mt-2">
+            Error: {mutation.error?.status}
+          </p>
+        )}
+      </form>
+    </main>
   );
 };
 

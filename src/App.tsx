@@ -10,7 +10,28 @@ import DashboardHome from "./pages/dashboard/home";
 
 const queryClient = new QueryClient();
 
+import { useEffect } from "react";
+import WebFont from "webfontloader";
+
+const useWebFontLoader = () => {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Open Sans:100,200,300,400,500,600,700"],
+      },
+      active: () => {
+        console.log("Fonts are loaded");
+      },
+      inactive: () => {
+        console.log("Fonts failed to load");
+      },
+    });
+  }, []);
+};
+
 function App() {
+  useWebFontLoader();
+
   return (
     <AuthProvider>
       <QueryClientProvider client={queryClient}>

@@ -7,8 +7,13 @@ export type UID = {
   name: string;
 };
 
-export const fetchUIDs = async () => {
+export const fetchAllUIDs = async () => {
   const response = await api.get<TResponse<UID[]>>("uid");
+  return response.data;
+};
+
+export const fetchUID = async (uid: string) => {
+  const response = await api.get<TResponse<UID>>(`uid/${uid}`);
   return response.data;
 };
 

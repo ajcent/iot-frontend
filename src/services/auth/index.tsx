@@ -1,10 +1,11 @@
+import { LoginFormInputs } from "@/pages/login";
 import { User } from "../../types/auth";
 import api from "../api";
 
-export const login = async () => {
+export const login = async (data: LoginFormInputs) => {
   const credentials = {
-    username: "Jaboy",
-    password: "123456789",
+    username: data.username,
+    password: data.password,
   };
 
   const response = await api.post<User>("user/login", credentials);
