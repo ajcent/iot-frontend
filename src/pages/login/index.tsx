@@ -1,5 +1,4 @@
-// components/Login.tsx
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
@@ -20,7 +19,7 @@ const Login: React.FC = () => {
   const { register, handleSubmit } = useForm<LoginFormInputs>();
   const { login: localLogin } = useAuth();
   const navigate = useNavigate();
-  const [error, setError] = useState<undefined | string>(undefined);
+  // const [error, setError] = useState<undefined | string>(undefined);
 
   const mutation = useMutation({
     mutationFn: serviceLogin,
@@ -29,13 +28,13 @@ const Login: React.FC = () => {
       console.log(data);
       navigate("/dashboard", { replace: true });
     },
-    onError: (err: Error) => {
-      console.log(err?.status);
-    },
+    // onError: (err: Error) => {
+    //   console.log(err?.status);
+    // },
   });
 
   const onSubmit = async (data: LoginFormInputs) => {
-    setError(() => undefined);
+    // setError(() => undefined);
     mutation.mutate(data);
   };
 
@@ -75,9 +74,7 @@ const Login: React.FC = () => {
           {mutation.isPending ? "Logging in..." : "Login"}
         </Button>
         {mutation.isError && (
-          <p className="text-destructive mt-2">
-            Error: {mutation.error?.status}
-          </p>
+          <p className="text-destructive mt-2">Invalid crendentials</p>
         )}
       </form>
     </main>

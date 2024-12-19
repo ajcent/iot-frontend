@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { CircleUserRound } from "lucide-react";
 
