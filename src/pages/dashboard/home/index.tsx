@@ -15,6 +15,7 @@ function DashboardHome() {
   };
 
   const uidList = uids.data?.data;
+  console.log(uidList);
 
   return (
     <div className="p-4">
@@ -28,12 +29,12 @@ function DashboardHome() {
         </div>
         <div className="flex flex-col gap-4">
           {uidList !== undefined &&
-            uidList.map(({ uid, name, amount }) => (
+            uidList.map(({ uid, plate_number, name, amount }, idx) => (
               <UserCard
                 title={name}
                 content={amount.toString()}
-                id={uid}
-                key={uid}
+                id={plate_number}
+                key={`${uid}-${plate_number}-${idx}`}
               />
             ))}
         </div>

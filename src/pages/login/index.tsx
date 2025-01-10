@@ -9,6 +9,7 @@ import { User } from "@/types/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Container } from "lucide-react";
 
 export type LoginFormInputs = {
   username: string;
@@ -42,28 +43,33 @@ const Login: React.FC = () => {
     <main className="h-screen w-full flex p-4 items-center justify-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="sm:max-w-xl w-full shadow-lg border rounded p-4"
+        className="sm:max-w-lg w-full shadow-lg px-4 py-8 sm:px-8 sm:py-16 rounded-xl"
       >
-        <h3 className="text-xl text-center font-bold mb-4">
-          <Link to="/">IGLUI PARK</Link>
+        <h3 className="text-xl text-center font-bold mb-8">
+          <Link to="/" className="flex gap-2 place-items-center justify-center">
+            <Container size={40} />
+            GILUI PARK
+          </Link>
         </h3>
-        <div>
+
+        <div className="mb-4">
           <Label htmlFor="username" className="text-muted-foreground">
             Username
           </Label>
           <Input
-            className="mt-2 mb-4"
+            className="mt-1 bg-muted border-none"
             id="username"
             placeholder="Eg. Luigi Dapo"
             {...register("username", { required: true })}
           />
         </div>
-        <div>
+
+        <div className="mb-6">
           <Label htmlFor="password" className="text-muted-foreground">
             Password
           </Label>
           <Input
-            className="mt-2 mb-4"
+            className="mt-1 bg-muted border-none"
             id="password"
             type="password"
             placeholder="********"

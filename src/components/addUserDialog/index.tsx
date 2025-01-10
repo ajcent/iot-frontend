@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { postUID, UID } from "@/services/uid";
+import { PostUID, postUID } from "@/services/uid";
 
 const AddUserDialog = () => {
   const queryClient = useQueryClient();
@@ -23,7 +23,7 @@ const AddUserDialog = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<UID>();
+  } = useForm<PostUID>();
 
   const mutation = useMutation({
     mutationFn: postUID,
@@ -33,7 +33,7 @@ const AddUserDialog = () => {
     },
   });
 
-  const onSubmit = (data: UID) => {
+  const onSubmit = (data: PostUID) => {
     mutation.mutate(data);
   };
 
@@ -94,11 +94,11 @@ const AddUserDialog = () => {
               id="uid"
               placeholder="eg. xxx-yyy-zzz"
               className="col-span-3"
-              {...register("uid", { required: "UID is required" })}
+              {...register("plate_number", { required: "UID is required" })}
             />
-            {errors.uid && (
+            {errors.plate_number && (
               <p className="col-span-4 text-red-500 text-sm">
-                {errors.uid.message}
+                {errors.plate_number.message}
               </p>
             )}
           </div>

@@ -26,7 +26,12 @@ function SearchSection() {
   };
 
   const renderAlert = () => {
-    if (!query || data?.data === undefined) return null;
+    if (!query || data?.data === undefined)
+      return (
+        <p className="text-muted-foreground">
+          No results. Try searching for something!
+        </p>
+      );
 
     if (data?.data === null) {
       return (
@@ -56,7 +61,7 @@ function SearchSection() {
   };
 
   return (
-    <section className="border rounded p-4 mb-8">
+    <section>
       <h3 className="text-base mb-2">
         <span className="font-medium">Have an account?</span>{" "}
         <span className="text-muted-foreground">Check it here.</span>
@@ -65,7 +70,7 @@ function SearchSection() {
         <Input
           type="search"
           placeholder="Search.."
-          className="pl-8"
+          className="pl-8 bg-muted border-none"
           onChange={handleInputChange}
         />
         <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />

@@ -16,6 +16,8 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   const { title, id, content } = props;
   const queryClient = useQueryClient();
 
+  console.log(id);
+
   const mutation = useMutation({
     mutationFn: deleteUID,
     onSuccess: () => {

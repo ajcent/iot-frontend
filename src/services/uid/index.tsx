@@ -5,6 +5,13 @@ export type UID = {
   uid: string;
   amount: number;
   name: string;
+  plate_number: string;
+};
+
+export type PostUID = {
+  plate_number: string;
+  amount: number;
+  name: string;
 };
 
 export const fetchAllUIDs = async () => {
@@ -22,7 +29,7 @@ export const deleteUID = async (id: string) => {
   return response.data;
 };
 
-export const postUID = async (payload: UID) => {
+export const postUID = async (payload: PostUID) => {
   const response = await api.post<TResponse<UID[]>>("uid", payload);
   return response.data;
 };
