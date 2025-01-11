@@ -31,7 +31,6 @@ const AddUserDialog = () => {
       queryClient.invalidateQueries({ queryKey: ["uids"] });
       reset();
     },
-    onError: (err) => {},
   });
 
   const onSubmit = (data: PostUID) => {
