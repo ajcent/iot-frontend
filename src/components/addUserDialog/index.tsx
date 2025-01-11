@@ -14,11 +14,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PostUID, postUID } from "@/services/uid";
-import { useRef } from "react";
 
 const AddUserDialog = () => {
   const queryClient = useQueryClient();
-  const dialogRef = useRef(null);
 
   const {
     register,
