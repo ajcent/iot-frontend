@@ -26,7 +26,6 @@ const Login: React.FC = () => {
     mutationFn: serviceLogin,
     onSuccess: (data: User) => {
       localLogin(data);
-      console.log(data);
       navigate("/dashboard", { replace: true });
     },
     // onError: (err: Error) => {

@@ -15,7 +15,6 @@ function DashboardHome() {
   };
 
   const uidList = uids.data?.data;
-  console.log(uidList);
 
   return (
     <div className="p-4">
@@ -33,7 +32,8 @@ function DashboardHome() {
               <UserCard
                 title={name}
                 content={amount.toString()}
-                id={plate_number}
+                id={uid}
+                plateNumber={plate_number}
                 key={`${uid}-${plate_number}-${idx}`}
               />
             ))}

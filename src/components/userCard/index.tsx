@@ -10,13 +10,12 @@ interface UserCardProps {
   title: string;
   id: string;
   content: string;
+  plateNumber: string;
 }
 
 const UserCard: React.FC<UserCardProps> = (props) => {
-  const { title, id, content } = props;
+  const { title, id, content, plateNumber } = props;
   const queryClient = useQueryClient();
-
-  console.log(id);
 
   const mutation = useMutation({
     mutationFn: deleteUID,
@@ -30,20 +29,19 @@ const UserCard: React.FC<UserCardProps> = (props) => {
   };
 
   return (
-    <Card className="shadow-none">
+    <Card className="shadow-none overflow-hidden">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <Button
-          variant="destructive"
-          size="icon"
-          onClick={() => handleClick(id)}
-        >
-          <Trash2 className="h-4 w-4" />
+        <Button variant="secondary" size="icon" onClick={() => handleClick(id)}>
+          <Trash2 className="h-4 w-4 text-destructive" />
         </Button>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">{content}</p>
+        <p className="text-muted-foreground">{`PHP ${content}`}</p>
       </CardContent>
+      <div className="flex bg-muted">
+        <span className="m-auto py-1">{plateNumber}</span>
+      </div>
     </Card>
   );
 };
