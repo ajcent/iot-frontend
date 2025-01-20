@@ -1,21 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import { CarFront, Container } from "lucide-react";
-
-import { fetchReservations } from "@/services/reservation";
-import ReservationCard from "@/components/reservationCard";
 
 import SearchSection from "./sections/_search";
 import LoginHeaderAvatar from "@/components/loginHeaderAvatar";
 import SearchingHuman from "@/components/svg/searchingHuman";
+import ParkingLot from "@/components/parkingLot";
 
 function Home() {
-  const { data } = useQuery({
-    queryKey: ["reservations"],
-    queryFn: fetchReservations,
-  });
-
-  const reservations = data?.data;
-
   return (
     <div className="p-4 sm:px-20 pt-0">
       <nav className="flex justify-between items-center py-4 pb-8">
@@ -38,9 +28,9 @@ function Home() {
           <CarFront />
           Park Management
         </h3>
-        {reservations?.map(({ slot, id, is_occupied }) => (
-          <ReservationCard key={id} slot={slot} isOccupied={is_occupied} />
-        ))}
+        <div className="flex items-center justify-center">
+          <ParkingLot />
+        </div>
       </section>
     </div>
   );

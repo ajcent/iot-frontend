@@ -6,6 +6,11 @@ export default {
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
+      aspectRatio: {
+        "9/16": "9 / 16",
+        "5/2": "5 / 2",
+        "7/1": "7 / 1",
+      },
       fontFamily: {
         sans: ["Open Sans", "Arial", "sans-serif"],
       },
