@@ -38,8 +38,8 @@ function ParkingLot() {
 const Entry = () => {
   return (
     <Card className="shadow-none w-1/2 mr-auto border-none bg-muted">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle>Here</CardTitle>
+      <CardHeader className="flex flex-row items-center justify-center space-y-0">
+        <CardTitle>Entrance and Exit</CardTitle>
       </CardHeader>
     </Card>
   );
